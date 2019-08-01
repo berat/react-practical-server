@@ -1,6 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import AuthRouter from './routes';
+import mongoose from 'mongoose';
+
+
+mongoose.connect('mongodb+srv://root:root@cluster0-qwfpm.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true}, err => console.log(err ? err : 'Mongo connected.'));
+
 
 const app = express();
 
