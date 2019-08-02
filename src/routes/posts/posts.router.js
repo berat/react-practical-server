@@ -35,6 +35,15 @@ const route = () => {
 
     res.send(post);
   })
+  router.route('/').get((req, res) => {
+    Posts.find((err, doc) => {
+      if (err) {
+        console.error(err)
+      } else {
+        res.send(doc)
+      }
+    })
+  });
 
 
   return router;

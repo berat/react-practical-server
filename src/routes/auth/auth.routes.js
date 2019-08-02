@@ -7,6 +7,17 @@ import crypto from 'crypto';
 const route = () => {
   const router = new express.Router();
 
+
+  router.route('/').get((req, res) => {
+    User.find((err, doc) => {
+      if (err) {
+        console.error(err)
+      } else {
+        res.send(doc)
+      }
+    })
+  });
+
   router.route('/giris-yap').post((req, res) => {
 
     const { email, password } = req.body;
