@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:20017', {useNewUrlParser: true}, err => console.log(err ? err : 'Mongo connected.'));
+mongoose.connect('mongodb+srv://root:root@cluster0-qwfpm.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true}, err => console.log(err ? err : 'Mongo connected.'));
 
 
 const app = express();
@@ -20,4 +20,4 @@ app.get('/', (req, res) => {
     res.send("API yapıyoruz.");
 })
 
-app.listen(process.env.PORT || 3300, () => console.log("server ayakta"))
+app.listen(3300, () => console.log("server ayakta"))
