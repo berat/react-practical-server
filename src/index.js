@@ -20,4 +20,4 @@ app.get('/', (req, res) => {
     res.send("API yapıyoruz.");
 })
 
-app.listen(3300, () => console.log("server ayakta"))
+app.listen(process.env.PORT || 3000, () => console.log("server ayakta"))
