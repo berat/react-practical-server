@@ -51,7 +51,7 @@ var route = function route() {
         if (err) {
           console.error(err);
         } else {
-          return doc.nickName;
+          console.log(doc);
         }
       });
     };
