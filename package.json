@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/src/index.js && NODE_PATH=src",
+    "start": "node ./dist/src/index.js",
     "build": "babel src/*.js -d dist && babel src/**/*.js -d dist && babel src/**/**/*.js -d dist"
   },
   "keywords": [],

@@ -1,7 +1,7 @@
 import express from 'express';
-import config from 'config';
+import config from '../../config';
 import jwt from 'jsonwebtoken';
-import User from 'models/User';
+import User from '../../models/User';
 import crypto from 'crypto';
 
 const route = () => {
