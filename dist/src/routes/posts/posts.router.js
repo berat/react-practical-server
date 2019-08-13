@@ -32,7 +32,7 @@ var route = function route() {
   router.route('/paylas').post(function (req, res) {
     var _req$body = req.body,
         post = _req$body.post,
-        whichUser = _req$body.whichUser;
+        who = _req$body.who;
 
 
     var tarihDuzenle = function tarihDuzenle(tarih) {
@@ -44,7 +44,7 @@ var route = function route() {
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     };
 
-    console.log("deneme 2 : " + whichUser);
+    console.log("deneme 2 : " + who);
 
     var hangiKul = function hangiKul(who) {
       _User2.default.findOne({ who: who }, function (err, doc) {
@@ -59,7 +59,7 @@ var route = function route() {
     console.log("deneme 3 : " + hangiKul(whichUser));
     var newPost = new _Posts2.default({
       post: post,
-      who: hangiKul(whichUser),
+      who: hangiKul(who),
       date: tarihDuzenle(new Date())
     });
 
