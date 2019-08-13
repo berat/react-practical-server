@@ -2,12 +2,13 @@ import express from 'express';
 import config from '../../config';
 import jwt from 'jsonwebtoken';
 import Posts from '../../models/Posts';
+import Users from '../../models/User';
 
 const route = () => {
   const router = new express.Router();
 
   router.route('/paylas').post((req, res) => {
-    const { post } = req.body;
+    const { post, who } = req.body;
 
 
     const tarihDuzenle = tarih => {
@@ -23,8 +24,19 @@ const route = () => {
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     }
 
+    const kim = who => {
+      Users.findOne({who}, (err, doc) => {
+        if (err) {
+          console.error(err)
+        } else {
+          console.log(doc)
+        }
+      })
+    }
+
     const newPost = new Posts({
       post: post,
+      who: kim(who),
       date: tarihDuzenle(new Date())
     });
 

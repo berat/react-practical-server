@@ -30,7 +30,6 @@ const route = () => {
         if (user.password === crypto.createHmac('sha256', config.jwtSecret).update(password).digest('hex')) {
           const token = jwt.sign({ userid: user._id }, config.jwtSecret);
           res.send({ status: true, token: token })
-          cookies.set('token', token)
         }
         else {
           res.send({ status: false, message: 'hatali sifre' })
