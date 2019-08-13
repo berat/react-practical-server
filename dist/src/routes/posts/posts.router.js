@@ -46,7 +46,6 @@ var route = function route() {
 
     console.log("deneme 2 : " + who);
 
-    console.log("deneme 3 : " + deneme);
     var newPost = new _Posts2.default({
       post: post,
       who: _User2.default.findOne({ _id: who }, function (err, doc) {
@@ -57,6 +56,7 @@ var route = function route() {
         }
       }),
       date: tarihDuzenle(new Date())
+
     });
 
     newPost.save().then(function (data) {

@@ -26,7 +26,6 @@ const route = () => {
 
     console.log("deneme 2 : " + who);
 
-    console.log("deneme 3 : " + deneme);
     const newPost = new Posts({
       post: post,
       who: Users.findOne({ _id: who }, (err, doc) => {
@@ -37,6 +36,7 @@ const route = () => {
         }
       }),
       date: tarihDuzenle(new Date())
+      
     });
 
     newPost.save().then(
