@@ -26,8 +26,8 @@ const route = () => {
 
     console.log("deneme 2 : " + who);
 
-    const hangiKul = async (who) => {
-      const result = await Users.findOne({_id: who}, (err, doc) => {
+    const hangiKul = (who) => {
+      Users.findOne({_id: who}, (err, doc) => {
         if (err) {
           console.error(err)
         } else {
@@ -36,13 +36,17 @@ const route = () => {
           return doc;
         }
       })
-      return result;
+    }
+
+    var senkron = async () => {
+      var result = await (hangiKul(who));
+      return result
     }
 
     console.log("deneme 3 : " + hangiKul(who));
     const newPost = new Posts({
       post: post,
-      who: hangiKul(who),
+      who: senkron,
       date: tarihDuzenle(new Date())
     });
 

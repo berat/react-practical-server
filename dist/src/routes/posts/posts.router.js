@@ -48,23 +48,27 @@ var route = function route() {
 
     console.log("deneme 2 : " + who);
 
-    var hangiKul = function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(who) {
+    var hangiKul = function hangiKul(who) {
+      _User2.default.findOne({ _id: who }, function (err, doc) {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(doc);
+          doc = doc.nickName;
+          return doc;
+        }
+      });
+    };
+
+    var senkron = function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         var result;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _User2.default.findOne({ _id: who }, function (err, doc) {
-                  if (err) {
-                    console.error(err);
-                  } else {
-                    console.log(doc);
-                    doc = doc.nickName;
-                    return doc;
-                  }
-                });
+                return hangiKul(who);
 
               case 2:
                 result = _context.sent;
@@ -78,7 +82,7 @@ var route = function route() {
         }, _callee, undefined);
       }));
 
-      return function hangiKul(_x) {
+      return function senkron() {
         return _ref.apply(this, arguments);
       };
     }();
@@ -86,7 +90,7 @@ var route = function route() {
     console.log("deneme 3 : " + hangiKul(who));
     var newPost = new _Posts2.default({
       post: post,
-      who: hangiKul(who),
+      who: senkron,
       date: tarihDuzenle(new Date())
     });
 
