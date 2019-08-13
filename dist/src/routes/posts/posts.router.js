@@ -52,6 +52,7 @@ var route = function route() {
           console.error(err);
         } else {
           console.log(doc);
+          return doc;
         }
       });
     };
