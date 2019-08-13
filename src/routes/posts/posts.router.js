@@ -8,7 +8,7 @@ const route = () => {
   const router = new express.Router();
 
   router.route('/paylas').post((req, res) => {
-    const { post, who } = req.body;
+    const { post, whichUser } = req.body;
 
 
     const tarihDuzenle = tarih => {
@@ -24,7 +24,7 @@ const route = () => {
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     }
 
-    const kim = who => {
+    const hangiKul = who => {
       Users.findOne({who}, (err, doc) => {
         if (err) {
           console.error(err)
@@ -36,7 +36,7 @@ const route = () => {
 
     const newPost = new Posts({
       post: post,
-      who: kim(who),
+      who: hangiKul(whichUser),
       date: tarihDuzenle(new Date())
     });
 
