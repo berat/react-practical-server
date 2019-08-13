@@ -28,13 +28,7 @@ const route = () => {
 
     const newPost = new Posts({
       post: post,
-      who: Users.findOne({ _id: who }, (err, doc) => {
-        if (err) {
-          console.error(err)
-        } else {
-          return doc.nickName
-        }
-      }),
+      who: Users.findOne({ _id: who }, (err, doc) => doc),
       date: tarihDuzenle(new Date())
       
     });

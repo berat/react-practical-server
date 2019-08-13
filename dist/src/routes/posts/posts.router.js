@@ -49,11 +49,7 @@ var route = function route() {
     var newPost = new _Posts2.default({
       post: post,
       who: _User2.default.findOne({ _id: who }, function (err, doc) {
-        if (err) {
-          console.error(err);
-        } else {
-          return doc.nickName;
-        }
+        return doc;
       }),
       date: tarihDuzenle(new Date())
 
