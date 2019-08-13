@@ -28,7 +28,7 @@ const route = () => {
 
     const newPost = new Posts({
       post: post,
-      who: Users.findOne({ _id: who }, (doc) => {res.json(doc.nickName)}),
+      who: Users.findOne({ _id: who }, (doc) => {res.json(doc)}),
       date: tarihDuzenle(new Date())
       
     });
