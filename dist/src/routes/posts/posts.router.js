@@ -54,6 +54,8 @@ var route = function route() {
         console.log(doc);
         console.log("********");
         console.log(doc.email);
+        console.log("********");
+        console.log(doc.nickName);
       }
     });
 
