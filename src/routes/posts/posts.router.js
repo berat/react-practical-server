@@ -24,6 +24,8 @@ const route = () => {
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     }
 
+    console.log("deneme 2 : " + whichUser);
+
     const hangiKul = who => {
       Users.findOne({who}, (err, doc) => {
         if (err) {
@@ -34,6 +36,7 @@ const route = () => {
       })
     }
 
+    console.log("deneme 3 : " + hangiKul(whichUser));
     const newPost = new Posts({
       post: post,
       who: hangiKul(whichUser),
