@@ -54,7 +54,7 @@ var route = function route() {
       }
     });
 
-    console.log("deneme 3 : " + hangiKul(who));
+    console.log("deneme 3 : " + deneme);
     var newPost = new _Posts2.default({
       post: post,
       who: deneme,

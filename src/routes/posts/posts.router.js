@@ -34,7 +34,7 @@ const route = () => {
         }
       })
 
-    console.log("deneme 3 : " + hangiKul(who));
+    console.log("deneme 3 : " + deneme);
     const newPost = new Posts({
       post: post,
       who: deneme,
