@@ -26,8 +26,8 @@ const route = () => {
 
     console.log("deneme 2 : " + who);
 
-    const hangiKul = (who) => {
-      Users.findOne({_id: who}, (err, doc) => {
+    const hangiKul = async (who) => {
+      const result = await Users.findOne({_id: who}, (err, doc) => {
         if (err) {
           console.error(err)
         } else {
@@ -36,6 +36,7 @@ const route = () => {
           return doc;
         }
       })
+      return result;
     }
 
     console.log("deneme 3 : " + hangiKul(who));
