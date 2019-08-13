@@ -26,8 +26,6 @@ var _User2 = _interopRequireDefault(_User);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 var route = function route() {
   var router = new _express2.default.Router();
 
@@ -48,47 +46,18 @@ var route = function route() {
 
     console.log("deneme 2 : " + who);
 
-    var hangiKul = function hangiKul(who) {
-      _User2.default.findOne({ _id: who }, function (err, doc) {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log(doc.nickName);
-        }
-      });
-    };
-
-    var senkron = function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var result;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return hangiKul(who);
-
-              case 2:
-                result = _context.sent;
-                return _context.abrupt('return', result);
-
-              case 4:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, undefined);
-      }));
-
-      return function senkron() {
-        return _ref.apply(this, arguments);
-      };
-    }();
+    var deneme = _User2.default.findOne({ _id: who }, function (err, doc) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(doc.nickName);
+      }
+    });
 
     console.log("deneme 3 : " + hangiKul(who));
     var newPost = new _Posts2.default({
       post: post,
-      who: senkron,
+      who: deneme,
       date: tarihDuzenle(new Date())
     });
 

@@ -26,25 +26,18 @@ const route = () => {
 
     console.log("deneme 2 : " + who);
 
-    const hangiKul = (who) => {
-      Users.findOne({_id: who}, (err, doc) => {
+      const deneme = Users.findOne({_id: who}, (err, doc) => {
         if (err) {
           console.error(err)
         } else {
           console.log(doc.nickName);
         }
       })
-    }
-
-    var senkron = async () => {
-      var result = await (hangiKul(who));
-      return result
-    }
 
     console.log("deneme 3 : " + hangiKul(who));
     const newPost = new Posts({
       post: post,
-      who: senkron,
+      who: deneme,
       date: tarihDuzenle(new Date())
     });
 
