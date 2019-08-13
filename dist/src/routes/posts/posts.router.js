@@ -50,7 +50,7 @@ var route = function route() {
       if (err) {
         console.error(err);
       } else {
-        console.log(doc.nickName);
+        return doc.nickName;
       }
     });
 
