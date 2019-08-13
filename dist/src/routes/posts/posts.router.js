@@ -46,6 +46,17 @@ var route = function route() {
 
     console.log("deneme 2 : " + who);
 
+    _User2.default.findOne({ _id: who }, function (err, doc) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("********");
+        console.log(doc);
+        console.log("********");
+        console.log(doc.email);
+      }
+    });
+
     var newPost = new _Posts2.default({
       post: post,
       who: "berat",

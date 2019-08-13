@@ -26,6 +26,18 @@ const route = () => {
 
     console.log("deneme 2 : " + who);
 
+
+    Users.findOne({ _id: who }, (err, doc) => {
+      if (err) {
+        console.error(err)
+      } else {
+        console.log("********");
+        console.log(doc);
+        console.log("********");
+        console.log(doc.email);
+      }
+    })
+
     const newPost = new Posts({
       post: post,
       who: "berat",
