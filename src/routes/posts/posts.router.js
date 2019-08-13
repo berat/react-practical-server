@@ -27,7 +27,7 @@ const route = () => {
     console.log("deneme 2 : " + who);
 
     const hangiKul = (who) => {
-      Users.findById({who}, (err, doc) => {
+      Users.findOne({_id: who}, (err, doc) => {
         if (err) {
           console.error(err)
         } else {
