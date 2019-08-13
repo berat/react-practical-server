@@ -49,6 +49,7 @@ var route = function route() {
     var kimmis = _User2.default.findOne({ _id: who }, function (err, doc) {
       return doc.nickName;
     });
+    console.log(kimmis);
     var newPost = new _Posts2.default({
       post: post,
       who: kimmis,

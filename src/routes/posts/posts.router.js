@@ -29,6 +29,7 @@ const route = () => {
 
     
     let kimmis = Users.findOne({ _id: who }, (err, doc) => doc.nickName)
+    console.log(kimmis)
     const newPost = new Posts({
       post: post,
       who: kimmis,
