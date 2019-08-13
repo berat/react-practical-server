@@ -28,10 +28,10 @@ const route = () => {
 
 
     
-
+    let kimmis = Users.findOne({ _id: who }, (err, doc) => doc.nickName)
     const newPost = new Posts({
       post: post,
-      who: Users.findOne({ _id: who }, (err, doc) => doc.nickName),
+      who: kimmis,
       date: tarihDuzenle(new Date())
 
     });
