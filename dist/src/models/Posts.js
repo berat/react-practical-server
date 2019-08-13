@@ -18,6 +18,7 @@ var postSchema = new Schema({
         type: String,
         required: [true, 'İçerik giriniz']
     },
+    who: String,
     date: String
 });
 

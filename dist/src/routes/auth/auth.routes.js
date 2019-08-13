@@ -63,11 +63,13 @@ var route = function route() {
   router.route('/kayit-ol').post(function (req, res) {
     var _req$body2 = req.body,
         email = _req$body2.email,
-        password = _req$body2.password;
+        password = _req$body2.password,
+        nickName = _req$body2.nickName;
 
     var passwordHashed = _crypto2.default.createHmac('sha256', _config2.default.jwtSecret).update(password).digest('hex');
 
     var newUser = new _User2.default({
+      nickName: nickName,
       email: email,
       password: passwordHashed,
       date: new Date()

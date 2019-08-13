@@ -20,13 +20,19 @@ var _Posts = require('../../models/Posts');
 
 var _Posts2 = _interopRequireDefault(_Posts);
 
+var _User = require('../../models/User');
+
+var _User2 = _interopRequireDefault(_User);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var route = function route() {
   var router = new _express2.default.Router();
 
   router.route('/paylas').post(function (req, res) {
-    var post = req.body.post;
+    var _req$body = req.body,
+        post = _req$body.post,
+        whichUser = _req$body.whichUser;
 
 
     var tarihDuzenle = function tarihDuzenle(tarih) {
@@ -38,8 +44,22 @@ var route = function route() {
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     };
 
+    console.log("deneme 2 : " + whichUser);
+
+    var hangiKul = function hangiKul(who) {
+      _User2.default.findOne({ who: who }, function (err, doc) {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(doc);
+        }
+      });
+    };
+
+    console.log("deneme 3 : " + hangiKul(whichUser));
     var newPost = new _Posts2.default({
       post: post,
+      who: hangiKul(whichUser),
       date: tarihDuzenle(new Date())
     });
 
@@ -56,7 +76,7 @@ var route = function route() {
       if (err) {
         console.error(err);
       } else {
-        res.json(doc);
+        res.send(doc);
       }
     });
   });
