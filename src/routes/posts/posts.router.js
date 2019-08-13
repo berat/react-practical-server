@@ -29,7 +29,7 @@ const route = () => {
 
 
     let kimmis = Users.findOne({ _id: who }, function (err, doc) {
-      return doc;
+      console.log(doc);
     });
     console.log(kimmis)
     const newPost = new Posts({
