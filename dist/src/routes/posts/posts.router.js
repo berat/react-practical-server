@@ -47,7 +47,7 @@ var route = function route() {
     console.log("deneme 2 : " + who);
 
     var hangiKul = function hangiKul(who) {
-      _User2.default.findOne({ who: who }, function (err, doc) {
+      _User2.default.findById({ who: who }, function (err, doc) {
         if (err) {
           console.error(err);
         } else {
