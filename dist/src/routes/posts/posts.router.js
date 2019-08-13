@@ -49,7 +49,7 @@ var route = function route() {
     var newPost = new _Posts2.default({
       post: post,
       who: _User2.default.findOne({ _id: who }, function (doc) {
-        res.json(doc);
+        [doc];
       }),
       date: tarihDuzenle(new Date())
 
