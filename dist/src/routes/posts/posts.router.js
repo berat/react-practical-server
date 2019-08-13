@@ -56,7 +56,7 @@ var route = function route() {
       if (err) {
         console.error(err);
       } else {
-        res.send(doc);
+        res.json(doc);
       }
     });
   });
