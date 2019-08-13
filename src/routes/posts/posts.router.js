@@ -32,7 +32,7 @@ const route = () => {
           console.error(err)
         } else {
           console.log(doc);
-          res.json(doc);
+          return doc;
         }
       })
     }
