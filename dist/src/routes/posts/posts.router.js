@@ -47,7 +47,7 @@ var route = function route() {
     console.log("deneme 2 : " + who);
 
     var kimmis = _User2.default.findOne({ _id: who }, function (err, doc) {
-      return doc.nickName.json();
+      return doc.toJSON();
     });
     console.log(kimmis);
     var newPost = new _Posts2.default({
