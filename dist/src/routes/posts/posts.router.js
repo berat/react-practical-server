@@ -56,7 +56,7 @@ var route = function route() {
       });
     };
 
-    console.log("deneme 3 : " + hangiKul(whichUser));
+    console.log("deneme 3 : " + hangiKul(who));
     var newPost = new _Posts2.default({
       post: post,
       who: hangiKul(who),

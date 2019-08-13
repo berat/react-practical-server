@@ -36,7 +36,7 @@ const route = () => {
       })
     }
 
-    console.log("deneme 3 : " + hangiKul(whichUser));
+    console.log("deneme 3 : " + hangiKul(who));
     const newPost = new Posts({
       post: post,
       who: hangiKul(who),
