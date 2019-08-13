@@ -31,7 +31,7 @@ const route = () => {
         if (err) {
           console.error(err)
         } else {
-          return (doc.nickName)
+          return doc.nickName;
         }
       })
     }
