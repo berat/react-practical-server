@@ -27,24 +27,13 @@ const route = () => {
     console.log("deneme 2 : " + who);
 
 
-    Users.findOne({ _id: who }, (err, doc) => {
-      if (err) {
-        console.error(err)
-      } else {
-        console.log("********");
-        console.log(doc);
-        console.log("********");
-        console.log(doc.email);
-        console.log("********");
-        console.log(doc.nickName);
-      }
-    })
+    Users.findOne({ _id: who }, (err, doc) => console.log(doc.nickName))
 
     const newPost = new Posts({
       post: post,
       who: "berat",
       date: tarihDuzenle(new Date())
-      
+
     });
 
     newPost.save().then(
