@@ -46,13 +46,11 @@ var route = function route() {
 
     console.log("deneme 2 : " + who);
 
-    _User2.default.findOne({ _id: who }, function (err, doc) {
-      return console.log(doc.nickName);
-    });
-
     var newPost = new _Posts2.default({
       post: post,
-      who: "berat",
+      who: _User2.default.findOne({ _id: who }, function (err, doc) {
+        return doc.nickName;
+      }),
       date: tarihDuzenle(new Date())
 
     });

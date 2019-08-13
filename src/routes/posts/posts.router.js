@@ -27,11 +27,11 @@ const route = () => {
     console.log("deneme 2 : " + who);
 
 
-    Users.findOne({ _id: who }, (err, doc) => console.log(doc.nickName))
+    
 
     const newPost = new Posts({
       post: post,
-      who: "berat",
+      who: Users.findOne({ _id: who }, (err, doc) => doc.nickName),
       date: tarihDuzenle(new Date())
 
     });
