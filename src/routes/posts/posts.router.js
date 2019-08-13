@@ -26,18 +26,16 @@ const route = () => {
 
     console.log("deneme 2 : " + who);
 
-      const deneme = Users.findOne({_id: who}, (err, doc) => {
+    console.log("deneme 3 : " + deneme);
+    const newPost = new Posts({
+      post: post,
+      who: Users.findOne({ _id: who }, (err, doc) => {
         if (err) {
           console.error(err)
         } else {
           return doc.nickName
         }
-      })
-
-    console.log("deneme 3 : " + deneme);
-    const newPost = new Posts({
-      post: post,
-      who: deneme,
+      }),
       date: tarihDuzenle(new Date())
     });
 
