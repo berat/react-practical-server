@@ -46,6 +46,7 @@ const route = () => {
 
     var deger = deneme(who).then(x => x.nickName);
 
+    console.log("berat  " + deger);
 
 
     // var deneme = Users.findOne();

@@ -99,6 +99,8 @@ var route = function route() {
       return x.nickName;
     });
 
+    console.log("berat  " + deger);
+
     // var deneme = Users.findOne();
     // console.log(deneme)
 
