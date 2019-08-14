@@ -6,9 +6,9 @@ import "@babel/polyfill";
 import Users from '../../models/User';
 
 const route = () => {
-  const router = new express.Router();
+  const router = require('express-promise-router')();
 
-  router.route('/paylas').post((req, res) => {
+  router.route('/paylas').post(async (req, res) => {
     const { post, who } = req.body;
 
 
@@ -44,9 +44,8 @@ const route = () => {
 
     console.log("a cıkıs degeri" + a);
 
-    var deger = deneme(who).then(x.nickName);
+    var deger = deneme(who).then(x => x.nickName);
 
-    console.log("berat  " + deger);
 
 
     // var deneme = Users.findOne();
@@ -84,7 +83,7 @@ const route = () => {
 
     res.send(post);
   })
-  router.route('/').get((req, res) => {
+  router.route('/').get(async (req, res) => {
     Posts.find((err, doc) => {
       if (err) {
         console.error(err)
