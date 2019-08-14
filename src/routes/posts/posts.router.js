@@ -31,11 +31,13 @@ const route = () => {
       console.log("*****" + item);
     })
 
-
+    var sonuc = null;
     console.log("333333333");
-    console.log(Users.findOne({_id: who}, (err, item) => {
-      document.write(item);
-    }))
+    Users.findOne({_id: who}, (err, item) => {
+      sonuc = item;
+    })
+    console.log(sonuc);
+
 
     console.log("22222222");
     console.log(Users.findOne({_id: who}, (err, item) => {
