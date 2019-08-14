@@ -35,7 +35,7 @@ var route = function route() {
 
   router.route('/paylas').post(function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-      var _req$body, post, who, tarihDuzenle, a, item, data, deger, newPost, _data;
+      var _req$body, post, who, tarihDuzenle, item, data, deger, newPost, _data;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -52,76 +52,51 @@ var route = function route() {
                 return gün + ' ' + aylar[aySayi] + ' ' + yil;
               };
 
-              console.log("deneme 2 : " + who);
-
-              console.log("11111111");
-
-              a = [];
-              _context.next = 7;
+              _context.next = 4;
               return _User2.default.findOne({ _id: who });
 
-            case 7:
+            case 4:
               item = _context.sent;
-              _context.next = 10;
+              _context.next = 7;
               return item.toJSON();
 
-            case 10:
+            case 7:
               data = _context.sent;
               deger = data.nickName;
 
 
+              console.log("1111 " + item);
+
               console.log("brat" + deger);
-
-              // var deneme = Users.findOne();
-              // console.log(deneme)
-
-              // var sonuc = null;
-              // console.log("333333333");
-              // Users.findOne({_id: who}, (err, item) => {
-              //   sonuc = item;
-              // })
-              // console.log(sonuc);
-
-
-              // console.log("22222222");
-              // console.log(Users.findOne({_id: who}, (err, item) => {
-              //   return item
-              // }))
-
-
-              // let kimmis = Users.findOne({ _id: who }, function (err, doc) {
-              //   console.log(doc);
-              // });
-              // console.log(kimmis)
               newPost = new _Posts2.default({
                 post: post,
                 who: deger,
                 date: tarihDuzenle(new Date())
 
               });
-              _context.prev = 14;
-              _context.next = 17;
+              _context.prev = 12;
+              _context.next = 15;
               return newPost.save();
 
-            case 17:
+            case 15:
               _data = _context.sent;
 
               res.json({ status: true, post: _data });
-              _context.next = 24;
+              _context.next = 22;
               break;
 
-            case 21:
-              _context.prev = 21;
-              _context.t0 = _context['catch'](14);
+            case 19:
+              _context.prev = 19;
+              _context.t0 = _context['catch'](12);
 
               res.json({ status: false, error: _context.t0 });
 
-            case 24:
+            case 22:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, undefined, [[14, 21]]);
+      }, _callee, undefined, [[12, 19]]);
     }));
 
     return function (_x, _x2) {

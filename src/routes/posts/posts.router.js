@@ -25,40 +25,14 @@ const route = () => {
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     }
 
-    console.log("deneme 2 : " + who);
 
-    console.log("11111111")
-
-    var a = [];
     const item = await Users.findOne({ _id: who })
     const data = await item.toJSON();
     var deger = data.nickName;
 
+    console.log("1111 " + item);
+
     console.log("brat" + deger);
-
-
-
-    // var deneme = Users.findOne();
-    // console.log(deneme)
-
-    // var sonuc = null;
-    // console.log("333333333");
-    // Users.findOne({_id: who}, (err, item) => {
-    //   sonuc = item;
-    // })
-    // console.log(sonuc);
-
-
-    // console.log("22222222");
-    // console.log(Users.findOne({_id: who}, (err, item) => {
-    //   return item
-    // }))
-
-
-    // let kimmis = Users.findOne({ _id: who }, function (err, doc) {
-    //   console.log(doc);
-    // });
-    // console.log(kimmis)
     const newPost = new Posts({
       post: post,
       who: deger,
