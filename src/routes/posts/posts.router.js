@@ -31,6 +31,11 @@ const route = () => {
       console.log("*****" + item);
     })
 
+    var deneme = Users.findOne();
+    if (deneme){
+      console.log("12142" + tojson(deneme));
+    }
+
     var sonuc = null;
     console.log("333333333");
     Users.findOne({_id: who}, (err, item) => {

@@ -51,6 +51,11 @@ var route = function route() {
       console.log("*****" + item);
     });
 
+    var deneme = _User2.default.findOne();
+    if (deneme) {
+      console.log("12142" + tojson(deneme));
+    }
+
     var sonuc = null;
     console.log("333333333");
     _User2.default.findOne({ _id: who }, function (err, item) {
