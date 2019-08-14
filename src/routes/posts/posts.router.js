@@ -34,7 +34,7 @@ const route = () => {
 
     console.log("333333333");
     console.log(Users.findOne({_id: who}, (err, item) => {
-      item
+      document.write(item);
     }))
 
     console.log("22222222");

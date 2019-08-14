@@ -53,7 +53,7 @@ var route = function route() {
 
     console.log("333333333");
     console.log(_User2.default.findOne({ _id: who }, function (err, item) {
-      item;
+      document.write(item);
     }));
 
     console.log("22222222");
