@@ -34,50 +34,12 @@ var route = function route() {
   var router = require('express-promise-router')();
 
   router.route('/paylas').post(function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
-      var deneme = function () {
-        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(who) {
-          var item, data;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.next = 2;
-                  return _User2.default.findOne({ _id: who });
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
+      var _req$body, post, who, tarihDuzenle, a, item, data, deger, newPost, _data;
 
-                case 2:
-                  item = _context.sent;
-                  _context.next = 5;
-                  return item.toJSON();
-
-                case 5:
-                  data = _context.sent;
-
-                  console.log("item : " + item);
-                  console.log("item adi : " + item.nickName);
-                  a = item;
-                  console.log("a degeri : " + a);
-                  console.log("data " + data);
-                  return _context.abrupt('return', item);
-
-                case 12:
-                case 'end':
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
-
-        return function deneme(_x3) {
-          return _ref2.apply(this, arguments);
-        };
-      }();
-
-      var _req$body, post, who, tarihDuzenle, a, deger, newPost;
-
-      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
               _req$body = req.body, post = _req$body.post, who = _req$body.who;
 
@@ -95,13 +57,20 @@ var route = function route() {
               console.log("11111111");
 
               a = [];
+              _context.next = 7;
+              return _User2.default.findOne({ _id: who });
+
+            case 7:
+              item = _context.sent;
+              _context.next = 10;
+              return item.toJSON();
+
+            case 10:
+              data = _context.sent;
+              deger = data.nickName;
 
 
-              console.log("a cıkıs degeri" + a);
-
-              deger = deneme(who).then(function (x) {
-                return x.nickName;
-              });
+              console.log("brat" + deger);
 
               // var deneme = Users.findOne();
               // console.log(deneme)
@@ -124,29 +93,35 @@ var route = function route() {
               //   console.log(doc);
               // });
               // console.log(kimmis)
-
               newPost = new _Posts2.default({
                 post: post,
                 who: deger,
                 date: tarihDuzenle(new Date())
 
               });
+              _context.prev = 14;
+              _context.next = 17;
+              return newPost.save();
 
+            case 17:
+              _data = _context.sent;
 
-              newPost.save().then(function (data) {
-                res.send({ status: true, post: data });
-              }, function (err) {
-                res.send({ status: false, error: err });
-              });
+              res.json({ status: true, post: _data });
+              _context.next = 24;
+              break;
 
-              res.send(post);
+            case 21:
+              _context.prev = 21;
+              _context.t0 = _context['catch'](14);
 
-            case 10:
+              res.json({ status: false, error: _context.t0 });
+
+            case 24:
             case 'end':
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, undefined);
+      }, _callee, undefined, [[14, 21]]);
     }));
 
     return function (_x, _x2) {
@@ -154,10 +129,10 @@ var route = function route() {
     };
   }());
   router.route('/').get(function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
-      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               _Posts2.default.find(function (err, doc) {
                 if (err) {
@@ -169,14 +144,14 @@ var route = function route() {
 
             case 1:
             case 'end':
-              return _context3.stop();
+              return _context2.stop();
           }
         }
-      }, _callee3, undefined);
+      }, _callee2, undefined);
     }));
 
-    return function (_x4, _x5) {
-      return _ref3.apply(this, arguments);
+    return function (_x3, _x4) {
+      return _ref2.apply(this, arguments);
     };
   }());
 

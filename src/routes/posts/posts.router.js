@@ -30,21 +30,11 @@ const route = () => {
     console.log("11111111")
 
     var a = [];
-    async function deneme(who) {
-      const item = await Users.findOne({ _id: who })
-      const data = await item.toJSON();
-      console.log("item : " + item);
-      console.log("item adi : " + item.nickName);
-      a = item;
-      console.log("a degeri : " + a);
-      console.log("data " + data);
-      return item;
-    }
+    const item = await Users.findOne({ _id: who })
+    const data = await item.toJSON();
+    var deger = data.nickName;
 
-
-    console.log("a cıkıs degeri" + a);
-
-    var deger = deneme(who).then(x => x.nickName);
+    console.log("brat" + deger);
 
 
 
@@ -76,12 +66,15 @@ const route = () => {
 
     });
 
-    newPost.save().then(
-      (data) => { res.send({ status: true, post: data }) },
-      (err) => { res.send({ status: false, error: err }) }
-    )
+    try {
 
-    res.send(post);
+      const data = await newPost.save();
+      res.json({ status : true, post: data})
+    }
+    catch(ex){
+      res.json({ status: false, error: ex })
+    }
+
   })
   router.route('/').get(async (req, res) => {
     Posts.find((err, doc) => {
