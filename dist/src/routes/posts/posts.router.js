@@ -46,10 +46,25 @@ var route = function route() {
 
     console.log("deneme 2 : " + who);
 
-    var kimmis = _User2.default.findOne({ _id: who }, function (err, doc) {
-      console.log(doc);
+    console.log("11111111");
+    _User2.default.findOne({ _id: who }, function (err, item) {
+      console.log("*****" + item);
     });
-    console.log(kimmis);
+
+    console.log("333333333");
+    console.log(_User2.default.findOne({ _id: who }, function (err, item) {
+      item;
+    }));
+
+    console.log("22222222");
+    console.log(_User2.default.findOne({ _id: who }, function (err, item) {
+      return item;
+    }));
+
+    // let kimmis = Users.findOne({ _id: who }, function (err, doc) {
+    //   console.log(doc);
+    // });
+    // console.log(kimmis)
     var newPost = new _Posts2.default({
       post: post,
       who: kimmis,
