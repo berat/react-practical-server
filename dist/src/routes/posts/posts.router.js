@@ -95,9 +95,7 @@ var route = function route() {
 
     console.log("a cıkıs degeri" + a);
 
-    var deger = deneme(who).then(function (x) {
-      return x.nickName;
-    });
+    var deger = deneme(who).then(x.nickName);
 
     console.log("berat  " + deger);
 
