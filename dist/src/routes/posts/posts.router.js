@@ -103,11 +103,37 @@ var route = function route() {
       return _ref.apply(this, arguments);
     };
   }());
-  router.route('/').get(function () {
+  router.route('/sil').post(function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
+      var id;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
+            case 0:
+              id = req.body.id;
+
+
+              _Posts2.default.remove({ _id: id }, function (err, doc) {
+                if (err) res.json({ status: false, error: err });else res.json({ status: true, post: doc });
+              });
+
+            case 2:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, undefined);
+    }));
+
+    return function (_x3, _x4) {
+      return _ref2.apply(this, arguments);
+    };
+  }());
+  router.route('/').get(function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
             case 0:
               _Posts2.default.find(function (err, doc) {
                 if (err) {
@@ -119,14 +145,14 @@ var route = function route() {
 
             case 1:
             case 'end':
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2, undefined);
+      }, _callee3, undefined);
     }));
 
-    return function (_x3, _x4) {
-      return _ref2.apply(this, arguments);
+    return function (_x5, _x6) {
+      return _ref3.apply(this, arguments);
     };
   }());
 

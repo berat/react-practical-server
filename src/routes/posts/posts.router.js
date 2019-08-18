@@ -11,7 +11,6 @@ const route = () => {
   router.route('/paylas').post(async (req, res) => {
     const { post, who } = req.body;
 
-
     const tarihDuzenle = tarih => {
       let aylar = [
         "Ocak", "Şubat", "Mart", "Nisan", "Mayıs",
@@ -24,7 +23,6 @@ const route = () => {
 
       return gün + ' ' + aylar[aySayi] + ' ' + yil;
     }
-
 
     const item = await Users.findOne({ _id: who })
     const data = await item.toJSON();
@@ -48,6 +46,15 @@ const route = () => {
     catch(ex){
       res.json({ status: false, error: ex })
     }
+
+  })
+  router.route('/sil').post(async (req, res) => {
+    const { id } = req.body;
+
+    Posts.remove({_id: id}, (err,doc) => {
+      if (err) res.json({ status: false, error: err }) 
+      else res.json({ status: true});
+    })
 
   })
   router.route('/').get(async (req, res) => {
