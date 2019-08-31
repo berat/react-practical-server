@@ -53,7 +53,7 @@ const route = () => {
 
     Posts.remove({_id: id}, (err,doc) => {
       if (err) res.json({ status: false, error: err }) 
-      else res.json({ status: true});
+      else res.json({ status: true });
     })
 
   })

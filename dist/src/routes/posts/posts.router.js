@@ -114,7 +114,7 @@ var route = function route() {
 
 
               _Posts2.default.remove({ _id: id }, function (err, doc) {
-                if (err) res.json({ status: false, error: err });else res.json({ status: true, post: doc });
+                if (err) res.json({ status: false, error: err });else res.json({ status: true });
               });
 
             case 2:
