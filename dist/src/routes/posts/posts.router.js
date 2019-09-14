@@ -63,40 +63,35 @@ var route = function route() {
             case 7:
               data = _context.sent;
               deger = data.nickName;
-
-
-              console.log("1111 " + item);
-
-              console.log("brat" + deger);
               newPost = new _Posts2.default({
                 post: post,
                 who: deger,
                 date: tarihDuzenle(new Date())
 
               });
-              _context.prev = 12;
-              _context.next = 15;
+              _context.prev = 10;
+              _context.next = 13;
               return newPost.save();
 
-            case 15:
+            case 13:
               _data = _context.sent;
 
               res.json({ status: true, post: _data });
-              _context.next = 22;
+              _context.next = 20;
               break;
 
-            case 19:
-              _context.prev = 19;
-              _context.t0 = _context['catch'](12);
+            case 17:
+              _context.prev = 17;
+              _context.t0 = _context['catch'](10);
 
               res.json({ status: false, error: _context.t0 });
 
-            case 22:
+            case 20:
             case 'end':
               return _context.stop();
           }
         }
-      }, _callee, undefined, [[12, 19]]);
+      }, _callee, undefined, [[10, 17]]);
     }));
 
     return function (_x, _x2) {

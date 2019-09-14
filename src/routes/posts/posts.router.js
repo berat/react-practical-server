@@ -27,10 +27,6 @@ const route = () => {
     const item = await Users.findOne({ _id: who })
     const data = await item.toJSON();
     var deger = data.nickName;
-
-    console.log("1111 " + item);
-
-    console.log("brat" + deger);
     const newPost = new Posts({
       post: post,
       who: deger,

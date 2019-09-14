@@ -56,7 +56,7 @@ var route = function route() {
           res.send({ status: false, message: 'hatali sifre' });
         }
       }
-      res.send("ok");
+      res.send({ status: true, message: user });
     });
   });
 
