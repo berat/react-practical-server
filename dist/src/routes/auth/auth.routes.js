@@ -26,6 +26,8 @@ var _crypto2 = _interopRequireDefault(_crypto);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 var route = function route() {
   var router = new _express2.default.Router();
 
@@ -56,7 +58,43 @@ var route = function route() {
           res.send({ status: false, message: 'hatali sifre' });
         }
       }
-      res.send({ status: true, message: user });
+      res.send("ok");
+    });
+  });
+
+  router.route('/kontrol').post(function (req, res) {
+    var username = req.body.username;
+
+
+    var find = function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(username) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _User2.default.findOne({ nickName: username });
+
+              case 2:
+                return _context.abrupt('return', _context.sent);
+
+              case 3:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, undefined);
+      }));
+
+      return function find(_x) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    find(username).then(function (user) {
+      if (user) res.json({ status: true, data: user });else res.json({ status: false });
+    }).catch(function (err) {
+      return res.json({ status: false, error: err });
     });
   });
 

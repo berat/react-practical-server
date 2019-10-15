@@ -39,6 +39,20 @@ const route = () => {
     })
   })
 
+  router.route('/kontrol').post((req, res) => {
+    const { username } = req.body;
+
+    const find = async username => await User.findOne({ nickName: username })
+
+    find(username)
+      .then((user) => {
+        if(user) res.json({status: true, data: user})
+        else res.json({status: false})
+      })
+      .catch((err) => res.json({ status: false, error: err }))
+
+  })
+
   router.route('/kayit-ol').post((req, res) => {
     const { email, password, nickName } = req.body;
     const passwordHashed = crypto.createHmac('sha256', config.jwtSecret).update(password).digest('hex');
