@@ -100,26 +100,90 @@ var route = function route() {
 
   router.route('/kayit-ol').post(function (req, res) {
     var _req$body2 = req.body,
+        username = _req$body2.username,
         email = _req$body2.email,
-        password = _req$body2.password,
-        nickName = _req$body2.nickName;
+        password = _req$body2.password;
 
     var passwordHashed = _crypto2.default.createHmac('sha256', _config2.default.jwtSecret).update(password).digest('hex');
 
     var newUser = new _User2.default({
-      nickName: nickName,
+      nickName: username,
       email: email,
       password: passwordHashed,
       date: new Date()
     });
 
-    newUser.save().then(function (data) {
-      res.send({ status: true, user: data });
-    }, function (err) {
-      res.send({ status: false, error: err });
+    newUser.validate(function (err, asd) {
+      console.log("err", err);
+      console.log("asd", asd);
     });
 
-    res.send(passwordHashed);
+    var find = function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(email) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _User2.default.findOne({ email: email });
+
+              case 2:
+                return _context2.abrupt('return', _context2.sent);
+
+              case 3:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, undefined);
+      }));
+
+      return function find(_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    find(email).then(function (user) {
+      console.log(user);
+      if (user === null) {
+        var findUsername = function () {
+          var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(username) {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return _User2.default.findOne({ nickName: username });
+
+                  case 2:
+                    return _context3.abrupt('return', _context3.sent);
+
+                  case 3:
+                  case 'end':
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, undefined);
+          }));
+
+          return function findUsername(_x3) {
+            return _ref3.apply(this, arguments);
+          };
+        }();
+        findUsername(username).then(function (user) {
+          if (user === null) {
+            newUser.save().then(function (data) {
+              res.send({ status: true, user: data });
+            });
+          } else {
+            res.send({ status: false, msg: "Username already exists" });
+          }
+        });
+      } else {
+        res.send({ status: false, msg: "E-mai already exists" });
+      }
+    }).catch(function (err) {
+      console.log(err);
+    });
   });
 
   return router;
