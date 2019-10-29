@@ -4,6 +4,6 @@ The first API I've done with Node.js. The code reading quality may be poor, but 
 
 I used Express and mongoDB in the project.
 
-To run the project
-1- `npm run-script build`
+To run the project <br>
+1- `npm run-script build` <br>
 2- `npm start`
